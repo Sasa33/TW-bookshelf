@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(books)}">
+        <h2>Book List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Book ISBN</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.isbn}"><a href="/book/${book.isbn}">Id</a></td>
+                <td th:text="${book.name}">name</td>
+                <td th:text="${book.author}">author</td>
+                <td th:text="${book.price}">price</td>
+                <td><a th:href="${ '/book/' + book.isbn}">View</a></td>
+                <td><a th:href="${'/book/edit/' + book.isbn}">Edit</a></td>
+                <td><a th:href="${'/book/delete/' + book.isbn}">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
