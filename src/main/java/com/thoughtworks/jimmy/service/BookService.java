@@ -10,5 +10,7 @@ public interface BookService {
 
     void create(Book book);
 
+    void edit(Book book);
+
     void delete(String isbn);
 }
